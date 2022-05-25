@@ -1,0 +1,83 @@
+<div class="content-wrapper">
+
+  <app-page-header-row [pageTitle]="pageTitle"></app-page-header-row>
+
+  <div class="content-body">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-xs-12">
+        <div class="card">
+          <div class="card-header no-border-bottom">
+            <h4 class="card-title">Visitors Overview</h4>
+            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+            <div class="heading-elements">
+              <ul class="list-inline mb-0">
+                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body collapse in">
+            <div class="card-block">
+              <div class="row my-1">
+                <div class="col-lg-4 col-xs-12">
+                  <div class="text-xs-center">
+                    <h3>23,454</h3>
+                    <p class="text-muted">Page Views
+                      <span class="success"><i class="ft-arrow-up"></i> 8.16%</span>
+                    </p>
+                    <button class="btn btn-primary">Mon bouton</button>
+                    <div id="sp-tristate-bar-total-revenue"></div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-12">
+                  <div class="text-xs-center">
+                    <h3>6,630</h3>
+                    <p class="text-muted">Unique Visitor
+                      <span class="danger"><i class="ft-arrow-down"></i> 2.30%</span>
+                    </p>
+                    <div id="sp-stacked-bar-total-sales"></div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-12">
+                  <div class="text-xs-center">
+                    <h3>86,578</h3>
+                    <p class="text-muted">Total Visits
+                      <span class="warning"><i class="ft-arrow-up"></i> 4.27%</span>
+                    </p>
+                    <div id="sp-bar-total-cost"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="chartjs">
+                    <canvas id="line-stacked-area" height="300"></canvas>
+                  </div>
+                  <ul class="list-inline text-xs-center mt-1">
+                    <li class="mr-1">
+                      <h6><i class="fa fa-circle success"></i>
+                        <span>Page Views</span>
+                      </h6>
+                    </li>
+                    <li class="mr-1">
+                      <h6><i class="fa fa-circle warning"></i>
+                        <span>Total Visits</span>
+                      </h6>
+                    </li>
+                    <li class="mr-1">
+                      <h6><i class="fa fa-circle danger"></i>
+                        <span>Unique Visitor</span>
+                      </h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

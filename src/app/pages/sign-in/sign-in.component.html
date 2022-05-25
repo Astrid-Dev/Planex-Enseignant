@@ -1,0 +1,59 @@
+<div class="content-wrapper">
+  <div class="content-body">
+    <section class="flexbox-container">
+      <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 box-shadow-3 p-0">
+        <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
+          <div class="card-header no-border pb-0">
+            <div class="card-title text-xs-center">
+              <img src="assets/template/app-assets/images/logo/stack-logo-dark.png" alt="branding logo">
+            </div>
+            <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2">
+              <span>{{'SIGNIN.TITLE' | translate}}</span>
+            </h6>
+          </div>
+          <div class="card-body collapse in">
+
+            <div class="card-block">
+              <form class="form-horizontal" [formGroup]="signInForm" (ngSubmit)="onFormSubmit()">
+                <fieldset class="form-group position-relative has-icon-left">
+                  <input type="text" [className]="getInputStatusClassName('email')" id="user-email" placeholder="{{'SIGNIN.EMAIL.PLACEHOLDER' | translate}}"
+                         formControlName="email"  required>
+                  <div class="form-control-position">
+                    <i class="ft-mail"></i>
+                  </div>
+                  <span class="text-danger font-size-small" *ngIf="isSubmitted && errorControl.email.errors?.required">
+                    {{'SIGNIN.EMAIL.REQUIRED' | translate}}
+                  </span>
+                  <span class="text-danger font-size-small" *ngIf="isSubmitted && errorControl.email.errors?.email">
+                    {{'SIGNIN.EMAIL.INVALID' | translate}}
+                  </span>
+                </fieldset>
+                <fieldset class="form-group position-relative has-icon-left">
+                  <input type="password" formControlName="password" [className]="getInputStatusClassName('password')" id="user-password" placeholder="{{'SIGNIN.PASSWORD.PLACEHOLDER' | translate}}">
+                  <div class="form-control-position">
+                    <i class="fa fa-key"></i>
+                  </div>
+                  <span class="text-danger font-size-small" *ngIf="isSubmitted && errorControl.password.errors?.required">
+                    {{'SIGNIN.PASSWORD.REQUIRED' | translate}}
+                  </span>
+                  <span class="text-danger font-size-small" *ngIf="isSubmitted && errorControl.password.errors?.minlength">
+                    {{'SIGNIN.PASSWORD.MINLENGTH' | translate}}
+                  </span>
+                  <span class="text-danger font-size-small" *ngIf="isSubmitted && errorControl.password.errors?.maxlength">
+                    {{'SIGNIN.PASSWORD.MAXLENGTH' | translate}}
+                  </span>
+                </fieldset>
+                <fieldset class="form-group row">
+                  <div class="col-md-6 col-xs-12 text-xs-center text-sm-left"></div>
+                  <div class="col-md-6 col-xs-12 float-sm-left text-xs-right text-sm-right"><a href="#" class="card-link">{{'SIGNIN.FORGOTPASSWORD' | translate}}</a></div>
+                </fieldset>
+                <button *ngIf="!isLoading" type="submit" class="btn btn-outline-primary btn-block"><i class="ft-unlock"></i> {{'SIGNIN.SUBMIT' | translate}}</button>
+                <div *ngIf="isLoading" class="center w-100"><i class="fa fa-spinner fa-2x fa-pulse text-primary"></i></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+
+.search-bar{
+
+  i{
+    position: absolute;
+    right: 40px;
+    top: 10px;
+  }
+}
+
+.flex, .flex-row, .flex-column
+{
+  display: flex;
+}
+
+.flex-row
+{
+  flex-direction: row;
+}
+
+.flex-column
+{
+  flex-direction: column;
+}
+
+.center
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-body div div .card, .required-file-importation, .loading-error, .not-configured-time
+{
+  min-height: 70.3vh;
+}
+
+.page-loader
+{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4em;
+}
+
+.loading-error{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+$primary: purple;
+$danger: red;
+

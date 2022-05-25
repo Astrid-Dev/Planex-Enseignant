@@ -1,0 +1,15 @@
+<div class="content-header row">
+  <div class="content-header-left col-md-6 col-xs-12 mb-2">
+    <div class="row breadcrumbs-top">
+      <div class="breadcrumb-wrapper col-xs-12">
+        <ol class="breadcrumb" *ngIf="breadcumbs.length > 1">
+          <li *ngFor="let breadcumb of breadcumbs; index as i;" [className]="i < breadcumbs.length -1 ? 'breadcrumb-item' : 'breadcrumb-item active'">
+            <a *ngIf="i < breadcumbs.length - 1" [href]="breadcumb.link">{{geValueOf(breadcumb.linkName)}}</a>
+            {{i === breadcumbs.length - 1 ? geValueOf(breadcumb.linkName) : ''}}
+          </li>
+        </ol>
+      </div>
+    </div>
+    <h3 class="content-header-title mb-0">{{geValueOf(pageTitle)}}</h3>
+  </div>
+</div>

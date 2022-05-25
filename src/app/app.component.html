@@ -1,0 +1,9 @@
+<app-header *ngIf="canShowOthersParts"></app-header>
+
+<app-sidemenu *ngIf="canShowOthersParts"></app-sidemenu>
+
+<div [className]="canShowOthersParts ? 'app-content content container-fluid' : 'app-content content container-fluid nospace'">
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer *ngIf="canShowOthersParts"></app-footer>
