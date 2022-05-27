@@ -7,77 +7,112 @@
       <div class="col-lg-12 col-md-12 col-xs-12">
         <div class="card">
           <div class="card-header no-border-bottom">
-            <h4 class="card-title">Visitors Overview</h4>
+            <h4 class="card-title">{{'HOME.DAYPLANNING' | translate}}</h4>
             <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-            <div class="heading-elements">
-              <ul class="list-inline mb-0">
-                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-              </ul>
+            <!--            <div class="heading-elements">-->
+            <!--              <ul class="list-inline mb-0">-->
+            <!--                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>-->
+            <!--                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>-->
+            <!--              </ul>-->
+            <!--            </div>-->
+          </div>
+          <div class="card-body collapse in" *ngIf="hasLoadedDatas">
+            <div class="card-block">
+              <div class="row my-1"></div>
+              <div class="table-responsive" *ngIf="currentDayActivities.length > 0">
+                <table class="table table-bordered mb-0 table-hover">
+                  <thead>
+                  <tr>
+                    <th>{{'HOME.PERIODS' | translate}}</th>
+                    <th>{{'HOME.ACTIVITIES' | translate}}</th>
+                    <th>{{'HOME.PLACES' | translate}}</th>
+                    <th>{{'HOME.DETAILS' | translate}}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let activity of currentDayActivities; index as i">
+                    <th>{{printPeriod(activity.period)}}</th>
+                    <td>{{printActivity(activity)}}</td>
+                    <td>{{printRoom(activity.room)}}</td>
+                    <td><i (click)="onDetailsClick(i)" class="fa fa-info-circle fa-2x ripple text-primary"></i></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="image-content flex-column center" *ngIf="currentDayActivities.length === 0">
+                <img src="/assets/images/nothing-planned.png"/>
+                <span class="text-italic">{{'HOME.NOTHINGPLANNED' | translate}}</span>
+              </div>
             </div>
           </div>
+          <div class="page-loader" *ngIf="hasLoadedDatas === null">
+            <i class="fa fa-refresh fa-pulse text-primary"></i>
+          </div>
+          <div class="loading-error mb-5" *ngIf="hasLoadedDatas === false">
+            <img src="assets/images/loading-error.png"/>
+            <button class="btn btn-primary" (click)="loadDatas()">{{'SECTORSLIST.RETRY' | translate}}</button>
+          </div>
+        </div>
+
+        <div class="card" *ngIf="hasLoadedDatas">
+          <div class="card-header no-border-bottom">
+            <h4 class="card-title">{{'HOME.WEEKPLANNING' | translate}}</h4>
+            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+            <!--            <div class="heading-elements">-->
+            <!--              <ul class="list-inline mb-0">-->
+            <!--                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>-->
+            <!--                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>-->
+            <!--              </ul>-->
+            <!--            </div>-->
+          </div>
           <div class="card-body collapse in">
-            <div class="card-block">
-              <div class="row my-1">
-                <div class="col-lg-4 col-xs-12">
-                  <div class="text-xs-center">
-                    <h3>23,454</h3>
-                    <p class="text-muted">Page Views
-                      <span class="success"><i class="ft-arrow-up"></i> 8.16%</span>
-                    </p>
-                    <button class="btn btn-primary">Mon bouton</button>
-                    <div id="sp-tristate-bar-total-revenue"></div>
+            <div class="card-block pr-0 pl-0">
+              <div class="card collapse-icon accordion-icon-rotate">
+                <div *ngFor="let dayActivity of weekActivities; index as dayIndex;">
+                  <div (click)="onCollapse(dayIndex)" [id]="'headingActivity'+dayActivity.id" class="card-header activity-day">
+                    <a [className]="isActiveItem(dayIndex) ? 'card-title lead': 'card-title lead collapsed'">
+                      {{printDayActivityName(dayActivity, dayIndex)}}
+                      <i [className]="isActiveItem(dayIndex) ? 'fa fa-minus' : 'fa fa-plus'"></i>
+                    </a>
+                  </div>
+                  <div [id]="'dayActivity'+dayActivity.id" [className]="isActiveItem(dayIndex) ? 'card-collapse collapse in' : 'card-collapse collapse'">
+                    <div class="card-body">
+                      <div class="card-block">
+                        <div class="table-responsive" *ngIf="dayActivity.activities.length > 0">
+                          <table class="table table-bordered mb-0 table-hover">
+                            <thead>
+                            <tr>
+                              <th>{{'HOME.PERIODS' | translate}}</th>
+                              <th>{{'HOME.ACTIVITIES' | translate}}</th>
+                              <th>{{'HOME.PLACES' | translate}}</th>
+                              <th>{{'HOME.DETAILS' | translate}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let activity of dayActivity.activities; index as activityIndex">
+                              <th>{{printPeriod(activity.period)}}</th>
+                              <td>{{printActivity(activity)}}</td>
+                              <td>{{printRoom(activity.room)}}</td>
+                              <td><i (click)="onDetailsClick(activityIndex, dayIndex)" class="fa fa-info-circle fa-2x ripple text-primary"></i></td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="center" *ngIf="dayActivity.activities.length === 0">
+                          <span class="text-italic">{{getRASTypeOf(dayIndex) | translate}} {{printDayName(dayIndex, dayActivity.displayDay)}}</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="col-lg-4 col-xs-12">
-                  <div class="text-xs-center">
-                    <h3>6,630</h3>
-                    <p class="text-muted">Unique Visitor
-                      <span class="danger"><i class="ft-arrow-down"></i> 2.30%</span>
-                    </p>
-                    <div id="sp-stacked-bar-total-sales"></div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-xs-12">
-                  <div class="text-xs-center">
-                    <h3>86,578</h3>
-                    <p class="text-muted">Total Visits
-                      <span class="warning"><i class="ft-arrow-up"></i> 4.27%</span>
-                    </p>
-                    <div id="sp-bar-total-cost"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="chartjs">
-                    <canvas id="line-stacked-area" height="300"></canvas>
-                  </div>
-                  <ul class="list-inline text-xs-center mt-1">
-                    <li class="mr-1">
-                      <h6><i class="fa fa-circle success"></i>
-                        <span>Page Views</span>
-                      </h6>
-                    </li>
-                    <li class="mr-1">
-                      <h6><i class="fa fa-circle warning"></i>
-                        <span>Total Visits</span>
-                      </h6>
-                    </li>
-                    <li class="mr-1">
-                      <h6><i class="fa fa-circle danger"></i>
-                        <span>Unique Visitor</span>
-                      </h6>
-                    </li>
-                  </ul>
-                </div>
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
+    <app-modal-activity-details></app-modal-activity-details>
   </div>
 </div>
 

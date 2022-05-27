@@ -16,6 +16,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { PageHeaderRowComponent } from './components/page-header-row/page-header-row.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import {AuthInterceptor} from "./helpers/auth.interceptor";
+import { ModalActivityDetailsComponent } from './components/modal-activity-details/modal-activity-details.component';
+import {NgxSmartModalModule} from "ngx-smart-modal";
 
 // Factory function required during AOT compilation
 export function httpTranslateLoaderFactory(http: HttpClient) {
@@ -31,7 +33,8 @@ export function httpTranslateLoaderFactory(http: HttpClient) {
     FooterComponent,
     HomeComponent,
     PageHeaderRowComponent,
-    SignInComponent
+    SignInComponent,
+    ModalActivityDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ export function httpTranslateLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    NgxSmartModalModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable

@@ -1,0 +1,89 @@
+<ngx-smart-modal #activityDetails identifier="activityDetails">
+  <div *ngIf="hasData">
+    <div>
+      <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2 mb-2">
+        <span>{{'MODALACTIVITY.INFOS.TITLE' | translate}}</span>
+      </h6>
+      <div class="row">
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.INFOS.ACTIVITY' | translate}} :</span>
+          <span>{{printActivity()}}</span>
+        </div>
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.INFOS.DAY' | translate}} : </span>
+          <span>{{datas?.displayDay}}</span>
+        </div>
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.INFOS.PERIOD' | translate}} :</span>
+          <span>{{printPeriod(activity?.period)}}</span>
+        </div>
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.INFOS.ROOM' | translate}} :</span>
+          <span>{{roomCode}}</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2 mb-2">
+        <span>{{'MODALACTIVITY.ACTIVITY.TITLE' | translate}}</span>
+      </h6>
+      <div class="row">
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.ACTIVITY.CODE' | translate}} :</span>
+          <span>{{activity?.name}}</span>
+        </div>
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.ACTIVITY.DESCRIPTION' | translate}} : </span>
+          <span>{{description}}</span>
+        </div>
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.ACTIVITY.ISOPTIONAL' | translate}} : </span>
+          <span>{{optionality | translate}}</span>
+        </div>
+        <div class="col-md-12" *ngIf="isDrifted()">
+          <span class="details-info">D{{'MODALACTIVITY.ACTIVITY.DRIFTFROM' | translate}} :</span>
+          <span>{{this.activity.driftFrom.code}}</span>
+        </div>
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.ACTIVITY.ENTITLED' | translate}} :</span>
+          <span>{{entitled}}</span>
+        </div>
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.ACTIVITY.PARTICIPATION' | translate}} :</span>
+          <span>{{participation}}</span>
+        </div>
+        <div class="col-md-12" *ngIf="!activity?.participation?.allStudentsParticipate">
+          <span class="details-info">{{'MODALACTIVITY.ACTIVITY.CONSTITUTION' | translate}} :</span>
+          <span>{{groupConstitution}}</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2 mb-2">
+        <span>{{'MODALACTIVITY.TEACHERS.TITLE' | translate}}</span>
+      </h6>
+      <div class="row">
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.TEACHERS.PRINCIPAL' | translate}} :</span>
+          <span>{{(activity?.principalTeacher?.noms) ? activity?.principalTeacher?.noms : ("MODALACTIVITY.NOTSPECIFIED1" | translate)}}</span>
+        </div>
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.TEACHERS.OFFICE' | translate}} : </span>
+          <span>{{teacherOffice}}</span>
+        </div>
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.TEACHERS.PHONE' | translate}} :</span>
+          <span>{{activity?.principalTeacher?.telephone ? activity?.principalTeacher?.telephone : "-"}}</span>
+        </div>
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.TEACHERS.EMAIL' | translate}} :</span>
+          <span>{{activity?.principalTeacher?.email ? activity?.principalTeacher?.email : "-"}}</span>
+        </div>
+        <div class="col-md-12">
+          <span class="details-info">{{'MODALACTIVITY.TEACHERS.OTHERS' | translate}} :</span>
+          <span>{{othersTeachers}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ngx-smart-modal>

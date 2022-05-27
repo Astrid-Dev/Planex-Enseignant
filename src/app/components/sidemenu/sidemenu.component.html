@@ -4,63 +4,6 @@
       <li [className]="getNavClassName(0)">
         <a routerLink="home"><i class="fa fa-home"></i><span class="menu-title">{{'SIDEMENU.HOME' | translate}}</span></a>
       </li>
-
-      <li [className]="getNavClassName(12, 12, 13)"><a><i class="fa fa-calendar" routerLink="plannings"></i><span class="menu-title">{{'SIDEMENU.PLANNING.TITLE' | translate}}</span></a>
-        <ul class="menu-content">
-          <li [className]="getNavClassName(13)">
-            <a routerLink="plannings/courses-and-tutorials" class="menu-item">{{'SIDEMENU.PLANNING.COURSES' | translate}}</a>
-          </li>
-        </ul>
-      </li>
-
-      <li [className]="getNavClassName(1, 2, 8)"><a><i class="fa fa-files-o" routerLink="files-input"></i><span class="menu-title">{{'SIDEMENU.INPUTFILES.TITLE' | translate}}</span></a>
-        <ul class="menu-content">
-          <li [className]="getNavClassName(2)">
-            <a routerLink="files-input/teachers" class="menu-item">{{'SIDEMENU.INPUTFILES.TEACHERS' | translate}}</a>
-          </li>
-          <li [className]="getNavClassName(3)">
-            <a routerLink="files-input/rooms" class="menu-item">{{'SIDEMENU.INPUTFILES.ROOMS' | translate}}</a>
-          </li>
-          <li [className]="getNavClassName(4)">
-            <a routerLink="files-input/sectors" class="menu-item">{{'SIDEMENU.INPUTFILES.SECTORS' | translate}}</a>
-          </li>
-          <li [className]="getNavClassName(5)">
-            <a routerLink="files-input/levels" class="menu-item">{{'SIDEMENU.INPUTFILES.LEVELS' | translate}}</a>
-          </li>
-          <li [className]="getNavClassName(6)">
-            <a routerLink="files-input/classrooms" class="menu-item">{{'SIDEMENU.INPUTFILES.CLASSROOMS' | translate}}</a>
-          </li>
-          <li [className]="getNavClassName(7)" [title]="'SIDEMENU.INPUTFILES.TUMEANING' | translate">
-            <a routerLink="files-input/teaching-units" class="menu-item">{{'SIDEMENU.INPUTFILES.TU' | translate}}</a>
-          </li>
-          <li [className]="getNavClassName(8)">
-            <a routerLink="files-input/students" class="menu-item">{{'SIDEMENU.INPUTFILES.STUDENTS' | translate}}</a>
-          </li>
-        </ul>
-      </li>
-
-      <li [className]="getNavClassName(9, 10, 12)"><a><i routerLink="configurations" [className]="current_menu >= 9 && current_menu <= 12 ? 'fa fa-cog fa-spin' : 'fa fa-cog'"></i><span class="menu-title">{{'SIDEMENU.CONFIGURATIONS.TITLE' | translate}}</span></a>
-        <ul class="menu-content">
-          <li [className]="getNavClassName(10)" [title]="'SIDEMENU.CONFIGURATIONS.SCHEDULEMEANING' | translate">
-            <a routerLink="configurations/times" class="menu-item">{{'SIDEMENU.CONFIGURATIONS.SCHEDULE' | translate}}</a>
-          </li>
-          <li [className]="getNavClassName(11)">
-            <a routerLink="configurations/courses-groups" class="menu-item">{{'SIDEMENU.CONFIGURATIONS.COURSESGROUPS' | translate}}</a>
-          </li>
-          <li [className]="getNavClassName(12)">
-            <a routerLink="admin/planning/courses" class="menu-item">{{'SIDEMENU.CONFIGURATIONS.TUTORIALSGROUPS' | translate}}</a>
-          </li>
-        </ul>
-      </li>
-
-      <li class="nav-item has-sub"><a><i class="fa fa-question-circle"></i><span class="menu-title">{{'SIDEMENU.HELP.TITLE' | translate}}</span></a>
-        <ul class="menu-content">
-          <li [className]="current_menu === -5 ? 'active' : ''">
-            <a routerLink="admin/planning/courses" class="menu-item">{{'SIDEMENU.HELP.FILESIMPORTATION' | translate}}</a>
-          </li>
-        </ul>
-      </li>
-
     </ul>
   </div>
 </div>
