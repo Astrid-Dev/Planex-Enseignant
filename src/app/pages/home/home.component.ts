@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   lastCollapsedItemIndex: number | null = null;
 
+  includeSecondaryActitvities: any = false;
+
   modal: any = null;
 
   constructor(
@@ -220,4 +222,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.modal.open();
   }
 
+  onIncludeStatusChange(event: any)
+  {
+  }
 }

@@ -19,25 +19,34 @@
           <div class="card-body collapse in" *ngIf="hasLoadedDatas">
             <div class="card-block">
               <div class="row my-1"></div>
-              <div class="table-responsive" *ngIf="currentDayActivities.length > 0">
-                <table class="table table-bordered mb-0 table-hover">
-                  <thead>
-                  <tr>
-                    <th>{{'HOME.PERIODS' | translate}}</th>
-                    <th>{{'HOME.ACTIVITIES' | translate}}</th>
-                    <th>{{'HOME.PLACES' | translate}}</th>
-                    <th>{{'HOME.DETAILS' | translate}}</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr *ngFor="let activity of currentDayActivities; index as i">
-                    <th>{{printPeriod(activity.period)}}</th>
-                    <td>{{printActivity(activity)}}</td>
-                    <td>{{printRoom(activity.room)}}</td>
-                    <td><i (click)="onDetailsClick(i)" class="fa fa-info-circle fa-2x ripple text-primary"></i></td>
-                  </tr>
-                  </tbody>
-                </table>
+              <div *ngIf="currentDayActivities.length > 0">
+                <div class="table-responsive">
+                  <table class="table table-bordered mb-0 table-hover">
+                    <thead>
+                    <tr>
+                      <th>{{'HOME.PERIODS' | translate}}</th>
+                      <th>{{'HOME.ACTIVITIES' | translate}}</th>
+                      <th>{{'HOME.PLACES' | translate}}</th>
+                      <th>{{'HOME.DETAILS' | translate}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let activity of currentDayActivities; index as i">
+                      <th>{{printPeriod(activity.period)}}</th>
+                      <td>{{printActivity(activity)}}</td>
+                      <td>{{printRoom(activity.room)}}</td>
+                      <td><i (click)="onDetailsClick(i)" class="fa fa-info-circle fa-2x ripple text-primary"></i></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+<!--                <fieldset>-->
+<!--                  <label class="display-inline-block custom-control custom-checkbox">-->
+<!--                    <input type="checkbox" name="checkInline1" [(ngModel)]="includeSecondaryActitvities" (ngModelChange)="onIncludeStatusChange($event)" checked="" class="custom-control-input">-->
+<!--                    <span class="c-indicator bg-primary custom-control-indicator"></span>-->
+<!--                    <span class="custom-control-description">Primary Checkbox</span>-->
+<!--                  </label>-->
+<!--                </fieldset>-->
               </div>
               <div class="image-content flex-column center" *ngIf="currentDayActivities.length === 0">
                 <img src="/assets/images/nothing-planned.png"/>
